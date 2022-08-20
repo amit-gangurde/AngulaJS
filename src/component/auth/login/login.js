@@ -5,22 +5,22 @@ angular.module('conferenceApp')
             $scope.request = {}
             var token = $cookies.get('token')
             if (token != undefined || token != null) {
-                $location.path('/home/welcome');
+                $location.path('/home');
             }
             $scope.login = function() {
                 $scope.errorMessage = null;
                 $scope.dangerAlert = null;
-                if (!$scope.UserName__c) {
+                if (!$scope.Email_id__c) {
                     $scope.errorMessage = 'Please enter your username';
                     return;
                 }
-                $scope.request.UserName__c = $scope.UserName__c;
+                $scope.request.Email_id__c = $scope.Email_id__c;
 
-                if (!$scope.Password__c) {
+                if (!$scope.User_Password__c) {
                     $scope.errorMessage = 'Please enter your password';
                     return;
                 }
-                $scope.request.Password__c = $scope.Password__c
+                $scope.request.User_Password__c = $scope.User_Password__c
 
                 apiCallout.post($scope.request, '/auth/login').then(function(response) {
                     if (response.success) {

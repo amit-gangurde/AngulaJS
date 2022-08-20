@@ -5,10 +5,6 @@ angular.module('conferenceApp')
             url: '/welcome',
             template: '<welcome></welcome>'
         })
-        .state('home.startPage', {
-            url: '/startPage',
-            template: '<start-page></start-page>',
-        })
         .state('home.memberInfo', {
             url: '/memberInfo',
             template: '<member-info></member-info>',
@@ -58,6 +54,12 @@ angular.module('conferenceApp')
 
 .component('home', {
     templateUrl: 'src/component/home/home.htm',
-    controller: function home($scope, apiCallout, $error, blockUI,utils, $cookies,$state,$rootScope) {
+    controller: function home($scope, apiCallout, $error, blockUI,utils, $cookies,$state,$rootScope,$location) {
+        $scope.login = function(){
+            $state.go('login');
+        }
+        $scope.register = function(){
+            $state.go('register');
+        }
     }
 });

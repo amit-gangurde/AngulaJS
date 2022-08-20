@@ -9,6 +9,10 @@ conferenceApp.config(function($stateProvider, $urlRouterProvider, $locationProvi
             url: '/home',
             template: '<home></home>'
         })
+        .state('login', {
+            url: '/login',
+            template: '<login></login>'
+        })
         .state('verifyEmail', {
             url: '/verifyEmail',
             template: '<verify-email></verify-email>'
