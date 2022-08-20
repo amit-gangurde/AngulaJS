@@ -1,11 +1,7 @@
 var conferenceApp = angular.module('conferenceApp', ['ui.router', 'ngCookies', 'toaster', 'blockUI']);
 conferenceApp.config(function($stateProvider, $urlRouterProvider, $locationProvider, $windowProvider) {
     $urlRouterProvider.otherwise('/home/welcome');
-    $stateProvider.state('startPage', {
-            url: '/startPage',
-            template: '<startPage></startPage>'
-        })
-        .state('forgotpassword', {
+    $stateProvider.state('forgotpassword', {
             url: '/forgotpassword',
             template: '<forgot-password></forgot-password>'
         })

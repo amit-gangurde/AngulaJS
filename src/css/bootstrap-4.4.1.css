@@ -464,7 +464,6 @@ mark,
     padding: 0.2em;
     background-color: #fcf8e3;
 }
-
 .list-unstyled {
     padding-left: 0;
     list-style: none;
@@ -504,8 +503,12 @@ mark,
 }
 
 .img-fluid {
-    max-width: 100%;
-    height: auto;
+    position: relative;
+    background-repeat: no-repeat;
+    background-size: 100% auto;
+    background-position: center top;
+    background-attachment: fixed;
+
 }
 
 .img-thumbnail {
