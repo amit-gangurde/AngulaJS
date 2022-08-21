@@ -1,41 +1,18 @@
 angular.module('conferenceApp')
 
 .config(function($stateProvider) {
-    $stateProvider.state('home.welcome', {
+    $stateProvider
+        .state('home.welcome', {
             url: '/welcome',
             template: '<welcome></welcome>'
         })
-        .state('home.memberInfo', {
-            url: '/memberInfo',
-            template: '<member-info></member-info>',
+        .state('home.bookingPage', {
+            url: '/bookingPage',
+            template: '<booking-page></booking-page>'
         })
-        .state('home.reservationInfo', {
-            url: '/reservationInfo',
-            template: '<reservation-info></reservation-info>'
-        })
-        .state('home.rightSideBar', {
-            url: '/rightSideBar',
-            template: ' <right-sidebar></right-sidebar>'
-        })
-        .state('home.requestReservation', {
-            url: '/requestReservation',
-            template: ' <request-reservation></request-reservation>'
-        })
-        .state('home.accountInfo', {
-            url: '/accountInfo',
-            template: ' <account-info></account-info>'
-        })
-        .state('home.checkInbox', {
-            url: '/checkInbox',
-            template: '<check-inbox></check-inbox>'
-        })
-        .state('home.activeReservation', {
-            url: '/activeReservation',
-            template: ' <active-reservation></active-reservation>'
-        })
-        .state('home.payment', {
-            url: '/payment',
-            template: ' <v2payment></v2payment>'
+        .state('home.bookingCart', {
+            url: '/bookingCart',
+            template: '<booking-cart></booking-cart>'
         })
 })
 
@@ -59,7 +36,7 @@ angular.module('conferenceApp')
             $state.go('login');
         }
         $scope.register = function(){
-            $state.go('register');
+            $state.go('bookingPage');
         }
     }
 });

@@ -1,7 +1,8 @@
 var conferenceApp = angular.module('conferenceApp', ['ui.router', 'ngCookies', 'toaster', 'blockUI']);
 conferenceApp.config(function($stateProvider, $urlRouterProvider, $locationProvider, $windowProvider) {
     $urlRouterProvider.otherwise('/home/welcome');
-    $stateProvider.state('forgotpassword', {
+    $stateProvider
+        .state('forgotpassword', {
             url: '/forgotpassword',
             template: '<forgot-password></forgot-password>'
         })
@@ -12,6 +13,10 @@ conferenceApp.config(function($stateProvider, $urlRouterProvider, $locationProvi
         .state('login', {
             url: '/login',
             template: '<login></login>'
+        })
+        .state('bookingPage', {
+            url: '/bookingPage',
+            template: '<booking-page></booking-page>'
         })
         .state('verifyEmail', {
             url: '/verifyEmail',
@@ -25,9 +30,9 @@ conferenceApp.config(function($stateProvider, $urlRouterProvider, $locationProvi
             url: '/register',
             template: '<register></register>'
         })
-        .state('updateEmail', {
-            url: '/updateEmail',
-            template: '<update-email></update-email>'
+        .state('bookingCart', {
+            url: '/bookingCart',
+            template: '<booking-cart></booking-cart>'
         })
         .state('help', {
             url: '/help',
