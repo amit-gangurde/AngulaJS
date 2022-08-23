@@ -16,9 +16,9 @@ angular.module('conferenceApp')
                 if (body !== undefined) {
                     request.body = body;
                 }
-                if (header !== undefined) {
-                    request.header = { 'headers': { 'authorization': 'Bearer ' + header.token } };
-                }
+                // if (header !== undefined) {
+                //     request.header = { 'headers': { 'authorization': 'Bearer ' + header.token } };
+                // }
                 return request;
             },
 

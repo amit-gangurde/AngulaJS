@@ -2,11 +2,108 @@
     <div class="modal fade in" tabindex="-1" role="dialog" style="display:block;opacity: 1.5 !important;">
 
         <div class="modal-dialog animated fadeInDown" id="mobileCancelRes">
-            <div class="modal-content"  style="width: 120%; bottom:200px; margin: 0 auto;">
-                <h2>Booking Details</h2>
+            <div class="modal-content"  style="width: 100%; bottom:20%; margin: 0 auto;">
+                <h4>Booking Details</h4>
+                <div>
+                    <form ng-submit="bookConference()">
+                        <div ng-show="errorMessage&&!messageWithLink&&!valLinkExpire" class="alert alert-danger" role="alert"> {{errorMessage}}</div>
+					    <div ng-show="messageWithLink" class="alert alert-danger" role="alert"> {{errorMessage}} Click <a href="" ng-click="loginPage()">here</a> to login.</div>
+                        <div ng-show="successMessage" class="alert alert-success" role="alert"> {{successMessage}} </div>
 
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="mb-0 col-sm-6 form-group">
+                                    <label class="mb-1">Date</label>
+                                    <span class="required-asterisk">*</span>
+                                    <div class="position-relative icon-form-control">
+                                        <input type="date" class="form-control" ng-model="Date__c">
+                                    </div>
+                                </div>
+                                <div class="mb-0 col-sm-6 form-group">
+                                    <label class="mb-1">Organizer Name</label>
+                                    <div class="position-relative icon-form-control">
+                                        <input type="text" value={{user}} class="form-control" disabled="true">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="mb-0 col-sm-6 form-group">
+                                    <label class="mb-1">Start Time</label>
+                                    <span class="required-asterisk">*</span>
+                                    <div class="position-relative icon-form-control">
+                                        <select class="form-control " id="state-plate " name="state-plate " ng-model="Start_Time__c">
+                                            <option ng-repeat="option in times" value="{{option}}">{{option}}</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="mb-0 col-sm-6 form-group">
+                                    <label class="mb-1">End Time</label>
+                                    <span class="required-asterisk">*</span>
+                                    <div class="position-relative icon-form-control">
+                                        <select class="form-control " id="state-plate " ng-model="End_Time__c">
+                                            <option ng-repeat="option in times" value="{{option}}">{{option}}</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="btn btn-primary btn-block text-uppercase" type="submit"> Search&nbsp; </button>
+                    </form>
                 </div>
-                  </div>
+                <!--<div ng-show="showTable">
+                    <div class="form-group" ng-repeat="x in conferenceInfo">
+                        <div class="row">
+                            <table ng-show="x.Conference_rooms__r">
+                                <div>{{x.Name}}</div>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Status</th>
+                                    <td>Action</td>
+                                </tr>
+                                <tbody ng-repeat="m in x.Conference_rooms__r">
+                                    <tr>
+                                        <td>{{m.Name}}</td>
+                                        <td>{{m.Status__c}}</td>
+                                        <td><a href="#"> Book Now</a></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <!-- <div ng-repeat="a in x.Conference_rooms__r">
+                                <div class="mb-0 col-sm-12 form-group">
+                                    <label class="mb-1">{{a.Name}}</label>
+                                    <div class="position-relative icon-form-control">
+                                        {{a.Status__c}}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+                </div>-->
+         </div>
+         <div>
+            <div ng-show="showTable" style="background-color: #e2ece2;">
+                <div class="form-group" ng-repeat="x in conferenceInfo">
+                    <div class="row center">
+                        <table ng-show="x.Conference_rooms__r">
+                            <th scope="col">
+                                <div>{{x.Name}}</div>
+                            </th>
+                            <tr scope="row">
+                                <th style="width:50%">Name</th>
+                                <td style="width:50%">Action</td>
+                            </tr>
+                            <tbody ng-repeat="m in x.Conference_rooms__r">
+                                <tr>
+                                    <td style="width:50%">{{m.Name}}</td>
+                                   <!--<td>{{m.Status__c}}</td>--> 
+                                    <td style="width:50%"><a ng-click="bookConference(x,m)" href="#"> Book Now</a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+            </div>
+            </div>
+         </div>
             </div>
         </div>
     </div>>

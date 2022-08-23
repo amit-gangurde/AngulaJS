@@ -1,12 +1,8 @@
 angular.module('conferenceApp')
     .component('login', {
         templateUrl: 'src/component/auth/login/login.htm',
-        controller: function loginController($scope, apiCallout, $cookies, $error,$location) {
+        controller: function loginController($scope,$rootScope, apiCallout, $cookies, $error,$location) {
             $scope.request = {}
-            var token = $cookies.get('token')
-            if (token != undefined || token != null) {
-                $location.path('/home');
-            }
             $scope.login = function() {
                 $scope.errorMessage = null;
                 $scope.dangerAlert = null;
@@ -24,9 +20,9 @@ angular.module('conferenceApp')
 
                 apiCallout.post($scope.request, '/auth/login').then(function(response) {
                     if (response.success) {
-                        $cookies.put("token", response.data.token, { path: '/' });
                         $error.showSuccess(response.message);
-                        $location.path('/home/welcome');
+                        $rootScope.user = $scope.Email_id__c;
+                        $location.path('bookingPage');
                     } else {
                         if (response.statusCode === 403) {
                             $scope.dangerAlert = response.message;

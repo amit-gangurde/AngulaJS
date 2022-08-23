@@ -31,12 +31,12 @@ angular.module('conferenceApp')
 
 .component('home', {
     templateUrl: 'src/component/home/home.htm',
-    controller: function home($scope, apiCallout, $error, blockUI,utils, $cookies,$state,$rootScope,$location) {
+    controller: function home($scope,$state) {
         $scope.login = function(){
             $state.go('login');
         }
         $scope.register = function(){
-            $state.go('bookingPage');
+            $state.go('register');
         }
     }
 });

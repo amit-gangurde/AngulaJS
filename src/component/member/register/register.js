@@ -2,7 +2,7 @@ angular.module('conferenceApp')
     .component('register', {
 
         templateUrl: 'src/component/member/register/register.htm',
-        controller: function registerController($scope, $cookies, $state, $location, $error, utils, apiCallout, $window) {
+        controller: function registerController($scope, $state, $error, apiCallout) {
             $scope.messageWithLink = false;
             $scope.valLinkExpire = false;
             $scope.messageWithLink = false;
@@ -12,18 +12,15 @@ angular.module('conferenceApp')
                 $scope.successMessage = null;
                 if ($scope.User_Password__c === '' || !$scope.User_Password__c) {
                     $scope.errorMessage = "Please enter your password";
-                    document.getElementById("message").style.display = "none";
                     return;
                 };
-                
                 
                 $scope.requestBody = {
                     Email_id__c : $scope.Email_id__c,
                     User_Password__c: $scope.User_Password__c,
                     Employee_Id__c :$scope.Employee_Id__c
-
                 }
-                apiCallout.post($scope.requestBody, '/member/register').then(function(response) {
+                apiCallout.post($scope.requestBody, '/employee/register').then(function(response) {
                     if (!response.success) {
                         if(response.message === 'You have already register for member portal.') {
                             $scope.messageWithLink = true;
@@ -34,9 +31,8 @@ angular.module('conferenceApp')
                         $scope.errorMessage = response.message;
                         return;
                     } else {
-                        $cookies.put("token", response.data.token, { path: '/' });
                         $error.showSuccess(response.message);
-                        $location.path('/home/welcome/');
+                        $state.go('login');
                         return;
                     }
                 }, function(response) {
@@ -47,6 +43,5 @@ angular.module('conferenceApp')
                     return $scope.errorMessage = response.message;
                 });
             };
-
         }
     });
